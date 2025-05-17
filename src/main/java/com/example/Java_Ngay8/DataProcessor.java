@@ -8,7 +8,7 @@ import java.util.Queue;
 public class DataProcessor <T extends DataPoint> implements Runnable {
     private final Queue<T> inputQueue;
     private final Queue<T> outputQueue;
-    private final List<T> processedData = new ArrayList<>(); // Danh sách lưu trữ lịch sử
+    private final List<T> processedData = new ArrayList<>();
 
 
     public DataProcessor(Queue<T> inputQueue, Queue<T> outputQueue) {
@@ -25,14 +25,12 @@ public class DataProcessor <T extends DataPoint> implements Runnable {
             }
             if (data != null) {
                 System.out.println("[Processor] Processing: " + data.getValue());
-
-                // Sau khi xử lý, đưa vào hàng đợi đầu ra
                 synchronized (outputQueue) {
                     outputQueue.offer(data);
                 }
             }
             try {
-                Thread.sleep(200); // Giả lập thời gian xử lý
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -50,19 +48,7 @@ public class DataProcessor <T extends DataPoint> implements Runnable {
         return filteredData;
     }
 
-//    // Tính toán trung bình giá trị
-//    public double calculateAverage(List<T> data) {
-//        if (data.isEmpty()) {
-//            return 0.0;
-//        }
-//        double sum = 0.0;
-//        for (T d : data) {
-//            sum += d.getValue();
-//        }
-//        return sum / data.size();
-//    }
-
-    // ✅ Thêm phương thức tính trung bình
+    // Thêm phương thức tính trung bình
     public double calculateAverage() {
         synchronized (processedData) {
             if (processedData.isEmpty()) {

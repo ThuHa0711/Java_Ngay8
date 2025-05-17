@@ -19,7 +19,6 @@ public class CustomClassLoader extends ClassLoader {
         this.pluginsDir = pluginsDir;
     }
 
-    // Lazy Loading: Chỉ load khi thực sự cần
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
         if (loadedClasses.containsKey(name)) {
@@ -42,7 +41,6 @@ public class CustomClassLoader extends ClassLoader {
         throw new ClassNotFoundException("Class " + name + " not found.");
     }
 
-    // Eager Loading: Load toàn bộ class từ thư mục plugins
     public void eagerLoadClasses() {
         File dir = new File(pluginsDir);
         if (!dir.exists()) {

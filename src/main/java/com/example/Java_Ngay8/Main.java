@@ -5,16 +5,12 @@ import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
-        // Đường dẫn tới thư mục plugins
         String pluginsDir = "plugins";
 
-        // Khởi tạo Custom ClassLoader
         CustomClassLoader classLoader = new CustomClassLoader(pluginsDir);
 
-        // Eager Loading: nạp toàn bộ class
         classLoader.eagerLoadClasses();
 
-        // Lazy Loading: nạp class cụ thể
         try {
             Class<?> pluginClass = classLoader.loadClass("com.pluginA.MyPlugin");
             System.out.println("Class loaded: " + pluginClass.getName());
@@ -37,7 +33,6 @@ public class Main {
         processThread.start();
         dispatchThread.start();
 
-        // Tính trung bình sau 5 giây:
         try {
             Thread.sleep(5000);
             System.out.println("[Main] Average Value: " + processor.calculateAverage());

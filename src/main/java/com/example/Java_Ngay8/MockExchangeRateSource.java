@@ -8,7 +8,7 @@ public class MockExchangeRateSource implements DataSource<ExchangeRate> {
     @Override
     public ExchangeRate fetchData() {
         long timestamp = System.currentTimeMillis();
-        double value = 1.0 + (random.nextDouble() * 0.1); // Giá trị ngẫu nhiên
+        double value = 1.0 + (random.nextDouble() * 0.1);
         return new ExchangeRate(timestamp, value, "USD/EUR");
     }
 }

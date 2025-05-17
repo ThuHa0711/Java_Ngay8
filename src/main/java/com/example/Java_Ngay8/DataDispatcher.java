@@ -20,7 +20,7 @@ public class DataDispatcher <T extends DataPoint> implements Runnable {
                 System.out.println("[Dispatcher] Dispatching data: " + data.getValue());
             }
             try {
-                Thread.sleep(100); // Giả lập gửi dữ liệu
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
