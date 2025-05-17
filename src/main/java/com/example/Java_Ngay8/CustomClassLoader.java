@@ -10,12 +10,12 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyCustomClassLoader extends ClassLoader {
+public class CustomClassLoader extends ClassLoader {
 
     private final Map<String, Class<?>> loadedClasses = new HashMap<>();
     private final String pluginsDir;
 
-    public MyCustomClassLoader(String pluginsDir) {
+    public CustomClassLoader(String pluginsDir) {
         this.pluginsDir = pluginsDir;
     }
 

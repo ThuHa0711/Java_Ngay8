@@ -9,7 +9,7 @@ public class Main {
         String pluginsDir = "plugins";
 
         // Khởi tạo Custom ClassLoader
-        MyCustomClassLoader classLoader = new MyCustomClassLoader(pluginsDir);
+        CustomClassLoader classLoader = new CustomClassLoader(pluginsDir);
 
         // Eager Loading: nạp toàn bộ class
         classLoader.eagerLoadClasses();
